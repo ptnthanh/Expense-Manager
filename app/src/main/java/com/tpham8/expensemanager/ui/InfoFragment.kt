@@ -9,6 +9,7 @@ import com.tpham8.expensemanager.R
 
 class InfoFragment : Fragment() {
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_info, container, false)
