@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        NavigationUI.setupActionBarWithNavController(
-            this, navHostFragment.navController
-        )
+        NavigationUI.setupActionBarWithNavController(this, navHostFragment.navController)
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             supportActionBar?.let {
@@ -57,10 +55,10 @@ class MainActivity : AppCompatActivity() {
                 navHostFragment.navController.navigate(R.id.action_mainFragment_to_infoFragment)
                 true
             }
-            R.id.action_detail -> {
-                navHostFragment.navController.navigate(R.id.action_mainFragment_to_detailFragment)
-                true
-            }
+            // Reset settings
+//            R.id.action_reset -> {
+//
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
