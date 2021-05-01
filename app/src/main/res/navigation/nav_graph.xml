@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/addExpenseDialogFragment"
-        android:name="com.tpham8.expensemanager.ui.AddExpenseDialogFragment"
+        android:name="com.tpham8.expensemanager.ui.AddExpenseDialog"
         android:label="fragment_add_expense_dialog"
         tools:layout="@layout/fragment_add_expense_dialog" />
     <fragment

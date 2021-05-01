@@ -16,11 +16,11 @@ interface ExpenseDao {
     fun deleteEntry(entry: Entry)
 
     @Query("SELECT * FROM expense_table WHERE id=(:id)")
-    fun getItem(id: Long): LiveData<Entry?>
+    fun getEntry(id: Long): LiveData<Entry?>
 
     @Query("SELECT * FROM expense_table ORDER BY id DESC")
-    fun getAllItems(): LiveData<List<Entry>>
+    fun getAllEntries(): LiveData<List<Entry>>
 
     @Query("SELECT * FROM expense_table ORDER BY id DESC LIMIT 1")
-    fun getLastItem(): LiveData<Entry?>
+    fun getLastEntry(): LiveData<Entry?>
 }

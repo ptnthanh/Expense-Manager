@@ -35,9 +35,9 @@ class ExpenseRepository private constructor(context: Context){
         }
     }
 
-    fun getEntry(id: Long): LiveData<Entry?> = expenseDao.getItem(id)
+    fun getEntry(id: Long): LiveData<Entry?> = expenseDao.getEntry(id)
 
-    fun getAllItems(): LiveData<List<Entry>> = expenseDao.getAllItems()
+    fun getAllEntries(): LiveData<List<Entry>> = expenseDao.getAllEntries()
 
     companion object {
 
