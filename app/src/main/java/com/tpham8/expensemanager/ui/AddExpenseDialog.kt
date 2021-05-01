@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.core.view.get
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -54,12 +56,15 @@ class AddExpenseDialog : BottomSheetDialogFragment(), AdapterView.OnItemSelected
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("Not yet implemented")
+        binding?.apply {
+            when (parent) {
+                categorySpinner -> newEntry.category = categorySpinner.getItemAtPosition(position).toString()
+                methodSpinner -> newEntry.method = methodSpinner.getItemAtPosition(position).toString()
+            }
+        }
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
+    override fun onNothingSelected(parent: AdapterView<*>?) { }
 
     override fun onDestroyView() {
         super.onDestroyView()
