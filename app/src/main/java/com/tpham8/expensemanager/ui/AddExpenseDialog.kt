@@ -61,4 +61,8 @@ class AddExpenseDialog : BottomSheetDialogFragment(), AdapterView.OnItemSelected
         TODO("Not yet implemented")
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }
