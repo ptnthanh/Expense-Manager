@@ -28,6 +28,7 @@ class MainFragment : Fragment() {
             webView.webViewClient = WebViewClient()
             webView.loadUrl("https://www.fool.com/the-ascent/research/average-monthly-expenses/")
             startButton.setOnClickListener{
+                findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
             }
         }
 
