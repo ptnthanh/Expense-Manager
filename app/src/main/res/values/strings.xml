@@ -11,6 +11,8 @@
     <string name="method">Method</string>
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
+    <string name="people_expense">This is how much people are spending.</string>
+    <string name="start">See how much I\'m spending</string>
 
     <string-array name="categoryArray">
         <item>Automotive</item>

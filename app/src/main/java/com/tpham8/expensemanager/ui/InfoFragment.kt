@@ -1,10 +1,8 @@
 package com.tpham8.expensemanager.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.tpham8.expensemanager.BuildConfig
 import com.tpham8.expensemanager.R
 import com.tpham8.expensemanager.databinding.FragmentInfoBinding
@@ -33,5 +31,10 @@ class InfoFragment : Fragment() {
             versionTextView.text = BuildConfig.VERSION_NAME
             copyrightTextView.text = resources.getString(R.string.copyright)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
     }
 }
