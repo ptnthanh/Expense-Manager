@@ -14,6 +14,11 @@
     <string name="people_expense">This is how much people are spending.</string>
     <string name="start">See how much I\'m spending</string>
 
+    <string name="delete_entry_alert">You want to delete: %s - %s?</string>
+    <string name="alert">Alert</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
     <string-array name="categoryArray">
         <item>Automotive</item>
         <item>Bills, utilities</item>
