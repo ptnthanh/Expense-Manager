@@ -1,6 +1,7 @@
 package com.tpham8.expensemanager.ui.main
 
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,6 +34,12 @@ class MainFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListe
             startButton.setOnClickListener{
                 findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
             }
+
+            when (prefs.getString(BACKGROUND_COLOR, "0")?.toInt()) {
+                0 -> root.setBackgroundColor(Color.parseColor("#ffffff"))
+                1 -> root.setBackgroundColor(Color.parseColor("#8ab6d6"))
+                else -> root.setBackgroundColor(Color.parseColor("#fff9b0"))
+            }
         }
 
         return mainFragmentBinding.root
@@ -50,6 +57,10 @@ class MainFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListe
     }
 
     private fun setColor() {
-
+        when (prefs.getString(BACKGROUND_COLOR, "0")?.toInt()) {
+            0 -> binding?.root?.setBackgroundColor(Color.parseColor("#ffffff"))
+            1 -> binding?.root?.setBackgroundColor(Color.parseColor("#8ab6d6"))
+            else -> binding?.root?.setBackgroundColor(Color.parseColor("#fff9b0"))
+        }
     }
 }

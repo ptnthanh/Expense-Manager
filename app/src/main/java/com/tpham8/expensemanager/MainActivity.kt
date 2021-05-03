@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
 import com.tpham8.expensemanager.ui.main.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var navHostFragment: NavHostFragment
 
@@ -22,6 +23,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.BlueTheme)
+        if (savedInstanceState == null) {
+            when (prefs.getString(CHOSEN_THEME, "0")?.toInt()) {
+                0 -> setTheme(R.style.BlueTheme)
+                else -> setTheme(R.style.YellowTheme)
+            }
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
@@ -42,12 +49,11 @@ class MainActivity : AppCompatActivity() {
             if (prefs.getBoolean(SHOW_MESSAGE_AT_START, false)) {
                 welcomeAlert()
             }
-            when (prefs.getString(CHOSEN_THEME, "0")?.toInt()) {
-                0 -> setTheme(R.style.BlueTheme)
-                else -> setTheme(R.style.YellowTheme)
-            }
+//            when (prefs.getBoolean(DARK_THEME, false)) {
+//                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//            }
         }
-
     }
 
     private fun welcomeAlert() {
@@ -97,5 +103,19 @@ class MainActivity : AppCompatActivity() {
         const val SHOW_MESSAGE_AT_START = "show_message_at_start"
         const val BACKGROUND_COLOR = "background_color"
         const val CHOSEN_THEME = "chosen_theme"
+        const val DARK_THEME = "dark_theme"
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            DARK_THEME -> darkTheme()
+        }
+    }
+
+    private fun darkTheme() {
+        when (prefs.getBoolean(DARK_THEME, false)) {
+            true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 }
