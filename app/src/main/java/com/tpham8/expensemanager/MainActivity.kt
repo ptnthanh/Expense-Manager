@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -14,12 +15,13 @@ import com.tpham8.expensemanager.ui.main.MainFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navHostFragment: NavHostFragment
+
     private val prefs: SharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
+        setTheme(R.style.BlueTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
@@ -36,6 +38,28 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        if (savedInstanceState == null) {
+            if (prefs.getBoolean(SHOW_MESSAGE_AT_START, false)) {
+                welcomeAlert()
+            }
+            when (prefs.getString(CHOSEN_THEME, "0")?.toInt()) {
+                0 -> setTheme(R.style.BlueTheme)
+                else -> setTheme(R.style.YellowTheme)
+            }
+        }
+
+    }
+
+    private fun welcomeAlert() {
+        val msg = resources.getString(R.string.welcome)
+        val builder = AlertDialog.Builder(this)
+        with(builder) {
+            setTitle(R.string.hello)
+            setMessage(msg)
+            setIcon(R.drawable.app_icon)
+            setPositiveButton(R.string.ok, null)
+            show()
+        }
     }
 
     override fun onSupportNavigateUp() = Navigation.findNavController(this, R.id.navHostFragment).navigateUp()
@@ -56,11 +80,22 @@ class MainActivity : AppCompatActivity() {
                 navHostFragment.navController.navigate(R.id.action_mainFragment_to_infoFragment)
                 true
             }
-            // Reset settings
-//            R.id.action_reset -> {
-//
-//            }
+            R.id.action_reset -> {
+                with(prefs.edit()) {
+                    remove(SHOW_MESSAGE_AT_START)
+                    remove(BACKGROUND_COLOR)
+                    remove(CHOSEN_THEME)
+                    apply()
+                }
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    companion object {
+        const val SHOW_MESSAGE_AT_START = "show_message_at_start"
+        const val BACKGROUND_COLOR = "background_color"
+        const val CHOSEN_THEME = "chosen_theme"
     }
 }

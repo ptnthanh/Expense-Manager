@@ -19,6 +19,14 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="show_message">Show message at start</string>
+    <string name="background_color">Background color</string>
+    <string name="choose_theme">Theme</string>
+
+    <string name="hello">Hello</string>
+    <string name="welcome">Welcome to Expense Manager app!</string>
+    <string name="ok">OK</string>
+
     <string-array name="categoryArray">
         <item>Automotive</item>
         <item>Bills, utilities</item>
@@ -39,5 +47,20 @@
     <string-array name="methodArray">
         <item>In store</item>
         <item>Online</item>
+    </string-array>
+
+    <string-array name="background_color">
+        <item>Light Blue</item>
+        <item>Light Yellow</item>
+    </string-array>
+
+    <string-array name="background_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="themes">
+        <item>Blue</item>
+        <item>Yellow</item>
     </string-array>
 </resources>

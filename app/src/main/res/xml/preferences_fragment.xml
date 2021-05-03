@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="show_message_at_start"
+        android:title="@string/show_message" />
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/background_color"
+        android:entryValues="@array/background_values"
+        android:key="background_color"
+        android:summary="%s"
+        android:title="@string/background_color"/>
+
+    <ListPreference
+        android:defaultValue="0"
+        android:entries="@array/themes"
+        android:entryValues="@array/background_values"
+        android:key="chosen_theme"
+        android:summary="%s"
+        android:title="@string/choose_theme"/>
+
+</PreferenceScreen>
