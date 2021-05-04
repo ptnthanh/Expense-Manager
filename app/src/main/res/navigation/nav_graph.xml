@@ -27,23 +27,18 @@
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
-        android:id="@+id/addExpenseDialogFragment"
-        android:name="com.tpham8.expensemanager.ui.AddExpenseDialog"
-        android:label="fragment_add_expense_dialog"
-        tools:layout="@layout/fragment_add_expense_dialog" />
-    <fragment
         android:id="@+id/detailFragment"
         android:name="com.tpham8.expensemanager.ui.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <action
-            android:id="@+id/action_detailFragment_to_addExpenseDialogFragment"
-            app:destination="@id/addExpenseDialogFragment" />
-        <action
             android:id="@+id/action_detailFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_detailFragment_to_addEntryDialog"
+            app:destination="@id/addEntryDialog" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -55,4 +50,9 @@
         android:name="com.tpham8.expensemanager.ui.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <dialog
+        android:id="@+id/addEntryDialog"
+        android:name="com.tpham8.expensemanager.ui.AddEntryDialog"
+        android:label="add_fragment"
+        tools:layout="@layout/add_fragment" />
 </navigation>

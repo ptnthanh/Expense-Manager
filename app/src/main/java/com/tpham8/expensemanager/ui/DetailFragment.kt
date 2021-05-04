@@ -37,7 +37,7 @@ class DetailFragment : Fragment() {
                 adapter = expenseAdapter
             }
             addButton.setOnClickListener{
-                findNavController().navigate(R.id.action_detailFragment_to_addExpenseDialogFragment)
+                findNavController().navigate(R.id.action_detailFragment_to_addEntryDialog)
             }
         }
 
