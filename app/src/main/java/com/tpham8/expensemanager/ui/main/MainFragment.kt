@@ -35,11 +35,7 @@ class MainFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListe
                 findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
             }
 
-            when (prefs.getString(BACKGROUND_COLOR, "0")?.toInt()) {
-                0 -> root.setBackgroundColor(Color.parseColor("#ffffff"))
-                1 -> root.setBackgroundColor(Color.parseColor("#8ab6d6"))
-                else -> root.setBackgroundColor(Color.parseColor("#fff9b0"))
-            }
+            setColor()
         }
 
         return mainFragmentBinding.root
@@ -59,8 +55,7 @@ class MainFragment : Fragment(), SharedPreferences.OnSharedPreferenceChangeListe
     private fun setColor() {
         when (prefs.getString(BACKGROUND_COLOR, "0")?.toInt()) {
             0 -> binding?.root?.setBackgroundColor(Color.parseColor("#ffffff"))
-            1 -> binding?.root?.setBackgroundColor(Color.parseColor("#8ab6d6"))
-            else -> binding?.root?.setBackgroundColor(Color.parseColor("#fff9b0"))
+            else -> binding?.root?.setBackgroundColor(Color.parseColor("#d3e0ea"))
         }
     }
 }

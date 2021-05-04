@@ -49,10 +49,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             if (prefs.getBoolean(SHOW_MESSAGE_AT_START, false)) {
                 welcomeAlert()
             }
-//            when (prefs.getBoolean(DARK_THEME, false)) {
-//                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//                false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//            }
+            darkTheme()
         }
     }
 
@@ -118,4 +115,5 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
+
 }

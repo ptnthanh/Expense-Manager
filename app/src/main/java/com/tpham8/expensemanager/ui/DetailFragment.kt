@@ -1,14 +1,18 @@
 package com.tpham8.expensemanager.ui
 
 import android.app.AlertDialog
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tpham8.expensemanager.MainActivity
 import com.tpham8.expensemanager.R
 import com.tpham8.expensemanager.database.Entry
 import com.tpham8.expensemanager.databinding.FragmentDetailBinding
@@ -19,6 +23,10 @@ class DetailFragment : Fragment() {
     private var binding: FragmentDetailBinding? = null
     private val viewModel: MainViewModel by activityViewModels()
     private val expenseAdapter = ExpenseAdapter()
+
+    private val prefs: SharedPreferences by lazy {
+        PreferenceManager.getDefaultSharedPreferences(activity)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +46,10 @@ class DetailFragment : Fragment() {
             }
             addButton.setOnClickListener{
                 findNavController().navigate(R.id.action_detailFragment_to_addEntryDialog)
+            }
+            when (prefs.getString(MainActivity.BACKGROUND_COLOR, "0")?.toInt()) {
+                0 -> root.setBackgroundColor(Color.parseColor("#ffffff"))
+                else -> root.setBackgroundColor(Color.parseColor("#d3e0ea"))
             }
         }
 

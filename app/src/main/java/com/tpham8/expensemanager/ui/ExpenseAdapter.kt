@@ -31,7 +31,7 @@ class ExpenseAdapter : RecyclerView.Adapter<ExpenseAdapter.ExpenseViewHolder>() 
     class ExpenseViewHolder(private val binding: ExpenseEntryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(entry: Entry) {
             binding.apply {
-                itemNameTextView.text = entry.item + " -"
+                itemNameTextView.text = entry.item + ":"
                 storeTextView.text = entry.store
                 amountTextView.text = "$" + entry.amount
                 categoryTextView.text = entry.category
